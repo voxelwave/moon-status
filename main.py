@@ -11,7 +11,10 @@ WEATHER_KEY_PATH = 'weather_key.env'
 def run_updates(token, key):
     # Gets the current Discord status, preserves text if any.
     current_status = status.retrieve_status(token)
-    current_text = current_status[status.STATUS]['text']
+    if(current_status[status.STATUS]):
+        current_text = current_status[status.STATUS]['text']
+    else:
+        current_text = None
     # Retrieves the moon phase for the current date, gets the moon phase emoji.
     emoji = luna.moon_phase_to_emoji(
         luna.get_moon_phase(key, luna.format_current_date())
