@@ -1,6 +1,6 @@
 import util.status_util as status
 import util.luna_util as luna
-import pytz # Ignore warning here. Should be installed properly in venv
+import pytz
 import time
 
 from datetime import datetime
@@ -44,12 +44,16 @@ def main():
 
     run_updates(token, key)
     while True:
-        hour = datetime.now(pytz.timezone('America/Chicago')).hour
+        now = datetime.now(pytz.timezone('America/Chicago'))
+        hour = now.hour
+        print(f'TIME LOG: {now}')
         if hour == 17 or hour == 5:
             run_updates(token, key)
+            print(f'Status changed successfully! Sleeping for 1 hour...')
             time.sleep(3600)
         else:
-            time.sleep(60)
+            print(f'No status change. Sleeping for 30 minutes...')
+            time.sleep(1800)
 
 if __name__ == '__main__':
     main()

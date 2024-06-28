@@ -1,6 +1,6 @@
 import requests
 import json
-import pytz # Ignore warning here. Should be installed properly in venv
+import pytz
 
 from datetime import datetime
 
@@ -55,22 +55,22 @@ def moon_phase_to_emoji(phase: float) -> str:
     https://www.visualcrossing.com/resources/documentation/weather-api/
     '''
     phase_int = int(phase * 100)
-    if phase_int in range(1, 25): # Waning phases span 0-49
+    if phase_int in range(6, 20):
         return '🌒'
-    if phase_int == 25:
+    if phase_int in range(20, 31): # 25
         return '🌓'
-    if phase_int in range(26, 50):
+    if phase_int in range(31, 45):
         return '🌔'
-    if phase_int == 50: # Waning phases span 50-99
+    if phase_int in range(45, 56): # 50
         return '🌕'
-    if phase_int in range(51, 75):
+    if phase_int in range(56, 70):
         return '🌖'
-    if phase_int == 75:
+    if phase_int in range(70, 81): # 75
         return '🌗'
-    if phase_int in range(76, 100):
+    if phase_int in range(81, 95):
         return '🌘'
     else:
-        return '🌑'
+        return '🌑' # 0
     
 def format_current_date() -> str:
     '''
