@@ -47,7 +47,7 @@ def main():
         now = datetime.now(pytz.timezone('America/Chicago'))
         hour = now.hour
         print(f'TIME LOG: {now}')
-        if hour == 17 or hour == 5:
+        if hour == 12 or hour == 0:
             run_updates(token, key)
             print(f'Status changed successfully! Sleeping for 1 hour...')
             time.sleep(3600)
